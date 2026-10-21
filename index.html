@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071027">
+<meta name="description" content="Seu espaço, suas memórias, sua magia.">
+<title>Diário Elemental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="entrada.css">
+</head>
+<body>
+<div class="cosmos" aria-hidden="true"><div class="nebula nebula-one"></div><div class="nebula nebula-two"></div><div class="stars" id="stars"></div></div>
+<main class="landing">
+<header class="brand"><span class="sigil" aria-hidden="true">✧</span> DIÁRIO ELEMENTAL</header>
+<section class="welcome">
+<div class="book-stage" aria-hidden="true">
+<div class="aura"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+<div class="book"><div class="pages"></div><div class="back-cover"></div><div class="cover">
+<div class="border"></div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="emblem"><span class="ring"></span><span class="star-symbol">✦</span><i></i><b></b></div></div><div class="ribbon"></div></div>
+<span class="spark spark-one">✦</span><span class="spark spark-two">✧</span><span class="spark spark-three">·</span>
+</div>
+<div class="copy">
+<div class="divider"> <span></span>✦<span></span></div>
+<p class="eyebrow">Suas notas</p>
+<h1>Esse é o seu espaço pessoal, escreva <br class="desktop-break"> seus pensamentos.</h1>
+<p class="subtitle">Um lugar para guardar seus segredos.</p>
+<button class="enter-button" id="openDiary" type="button">Começar <span aria-hidden="true">✦</span></button>
+<p class="hint"><span>✧</span> Toque para começar <span>✧</span></p>
+</div>
+</section>
+<footer class="footer"><span></span><p>Vamos começar uma aventura pela sua mente?</p><span></span></footer>
+</main>
+<dialog id="elementDialog" class="element-dialog" aria-labelledby="dialogTitle">
+<form method="dialog" class="close-row"><button class="close" aria-label="Fechar" value="cancel">×</button></form>
+<p class="eyebrow">ESCOLHA SEU ELEMENTO</p><h2 id="dialogTitle">Qual elemento combina com este capítulo?</h2>
+<p class="description">Você poderá trocar o tema depois nas configurações. Sua escolha ficará salva</p>
+<div class="element-grid">
+<button class="element-card water" data-element="agua" type="button"><span>≈</span><strong>Água</strong><small>Mergulhe na sua mente</small></button>
+<button class="element-card fire" data-element="fogo" type="button"><span>♨</span><strong>Fogo</strong><small>Escreva sua intensidade</small></button>
+<button class="element-card air" data-element="ar" type="button"><span>༄</span><strong>Ar</strong><small>Seja livre como e vento</small></button>
+<button class="element-card earth" data-element="terra" type="button"><span>❖</span><strong>Terra</strong><small>Pense com calma</small></button>
+<button class="element-card thunder" data-element="trovao" type="button"><span>ϟ</span><strong>Trovão</strong><small>Força e intensidade</small></button>
+</div><p class="dialog-note" id="dialogNote" aria-live="polite"></p>
+</dialog>
+
+
+<!-- TELA PRINCIPAL DO DIÁRIO -->
+
+<!-- PÁGINA PRINCIPAL DO DIÁRIO ELEMENTAL -->
+<section id="diaryApp" class="diary-app" hidden>
+
+  <header class="diary-topbar">
+    <a href="#" class="diary-brand">
+      <span class="brand-symbol">✧</span>
+      <span>DIÁRIO ELEMENTAL</span>
+    </a>
+
+    <button id="changeElement" class="change-element-btn" type="button">
+      <span>✦</span> Trocar</button>
+    
+    <!-- Camada dos efeitos mágicos de cada elemento -->
+<div id="elementEffects" class="element-effects" aria-hidden="true">
+  <div class="element-atmosphere"></div>
+  <div id="elementParticles" class="element-particles"></div>
+  <img id="elementGif" class="element-gif" src="" alt="">
+</div>
+    
+    
+  </header>
+
+  <main class="diary-main">
+
+    <!-- APRESENTAÇÃO DO ELEMENTO -->
+    <section class="element-hero">
+      <div class="hero-orbit" aria-hidden="true"></div>
+
+      <div class="element-seal">
+        <span id="elementMark" aria-hidden="true">≈</span>
+      </div>
+
+      <p class="hero-eyebrow">ESCREVA IDEIAS CRIATIVAS</p>
+
+      <h1 id="elementHeading">Diário das Marés</h1>
+
+      <p id="currentElement" class="element-description">
+        Seu elemento: Água
+      </p>
+
+      <p class="hero-message">
+        Um lugar para guardar aquilo que o tempo não deve apagar.
+      </p>
+    </section>
+
+    <!-- ÁREA DE CRIAÇÃO -->
+    <section class="creation-section">
+
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">CAPÍTULOS DA SUA HISTÓRIA</p>
+          <h2>Suas memórias</h2>
+        </div>
+
+        <span class="heading-flower" aria-hidden="true">✧</span>
+      </div>
+
+      <div class="creation-paper">
+
+        <div class="paper-decoration" aria-hidden="true">
+          ✦ ───────── ✧ ───────── ✦
+        </div>
+
+        <div class="paper-icon" aria-hidden="true">📖</div>
+
+        <h3>Uma nova página espera por você</h3>
+
+        <p>
+          Uma lembrança, um pensamento, um sonho...
+          cada um pode ganhar seu próprio lugar.
+        </p>
+
+        <button id="createPage" class="create-page-btn" type="button">
+          <span aria-hidden="true">＋</span>
+          Criar minha página
+        </button>
+
+        <p class="paper-footnote">
+          ✧ Comece do zero ou escolha um modelo encantado. ✧
+        </p>
+
+      </div>
+    </section>
+
+    <!-- NAVEGAÇÃO VISUAL -->
+    <nav class="diary-navigation" aria-label="Navegação do diário">
+
+      <button class="nav-card active" type="button">
+        <span class="nav-card-icon">❧</span>
+        <span>Meu diário</span>
+        <small>Suas histórias</small>
+      </button>
+
+      <button class="nav-card" type="button">
+        <span class="nav-card-icon">☾</span>
+        <span>Calendário</span>
+        <small>Seus momentos</small>
+      </button>
+
+      <button class="nav-card" type="button">
+        <span class="nav-card-icon">✿</span>
+        <span>Decorações</span>
+        <small>Seu estilo</small>
+      </button>
+
+      <button class="nav-card" id="settingsShortcut" type="button">
+        <span class="nav-card-icon">⚙</span>
+        <span>Configurações</span>
+        <small>Seu universo</small>
+      </button>
+
+    </nav>
+
+    <!-- LISTA DE PÁGINAS -->
+    <section class="saved-memories">
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">SEU PEQUENO ACERVO</p>
+          <h2>Meu cantinho de memórias</h2>
+        </div>
+      </div>
+
+      <div id="memoryList" class="memory-list">
+
+        <div class="empty-memories">
+          <span aria-hidden="true">❀</span>
+          <p>Suas páginas aparecerão aqui quando você começar a criá-las.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="diary-footer">
+      <span>✧</span>
+      Suas memória merece um lugar especial.
+      <span>✧</span>
+    </footer>
+
+  </main>
+</section>
+<!-- FIM DA PÁGINA PRINCIPAL -->
+
+
+
+<!-- VARINHA MÁGICA -->
+<div class="magic-wand-container">
+  <button
+    id="magicWand"
+    class="magic-wand"
+    type="button"
+    aria-label="Abrir menu mágico"
+    aria-expanded="false"
+    aria-controls="magicMenu"
+  >
+    <span class="wand-spark">✦</span>
+    <span class="wand-handle">🪄</span>
+  </button>
+
+  <div id="magicMenu" class="magic-menu" hidden>
+    <p class="magic-menu-title">✧ Um toque✧</p>
+
+    <button type="button" data-magic-action="write">
+      ✍️ Criar uma página
+    </button>
+
+    <button type="button" data-magic-action="inspire">
+      🌙 Inspirar minha escrita
+    </button>
+
+    <button type="button" data-magic-action="sparkles">
+      ✨ Espalhar magia
+    </button>
+  </div>
+</div>
+
+<!-- AVISO DAS AÇÕES MÁGICAS -->
+<div id="magicMessage" class="magic-message" role="status" aria-live="polite"></div>
+
+<script src="entrada.js"></script>
+</body>
+</html>
+
+
+
+

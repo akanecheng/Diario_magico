@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#18223d">
+  <title>Diário mágico</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="editor.css">
+</head>
+
+<body data-elemento="agua">
+  <div class="ceu-magico" id="ceuMagico" aria-hidden="true"></div>
+
+  <header class="cabecalho">
+    <a class="voltar" href="index.html" aria-label="Voltar ao diário">←</a>
+
+    <div class="marca">
+      <span class="marca-simbolo" id="simboloMarca">◈</span>
+      <div>
+        <span class="marca-titulo">DIÁRIO MÁGICO</span>
+        <span class="marca-subtitulo">Seu refúgio encantado</span>
+      </div>
+    </div>
+
+    <button class="botao-trocar" id="trocarElemento" type="button">
+      <span id="iconeTrocar">💧</span>
+      <span>Trocar elemento</span>
+    </button>
+  </header>
+
+  <main class="conteudo">
+    <section class="introducao">
+      <span class="selo-elemento" id="seloElemento">✧ ÁGUA ✧</span>
+      <h1>Suas notas</h1>
+      <p>Escreva suas notas aqui.</p>
+    </section>
+
+    <section class="editor">
+      <div class="topo-folha">
+        <div class="identificacao">
+          <div class="icone-elemento" id="iconeElemento">💧</div>
+          <div class="identificacao-texto">
+            <label for="titulo">Título</label>
+            <input id="titulo" type="text" maxlength="100"
+              placeholder="Dê um nome à sua história..." autocomplete="off">
+            <div class="data-linha">
+              <span aria-hidden="true">▦</span>
+              <input id="data" type="date" aria-label="Data da memória">
+            </div>
+          </div>
+        </div>
+
+        <button id="botaoSalvar" class="botao-salvar" type="button">
+          <span>♡</span> Salvar
+        </button>
+      </div>
+
+      <div class="controles-secundarios">
+        <label class="seletor-elemento">
+          <span>✧</span>
+          <span>Escolha</span>
+          <select id="elemento" aria-label="Escolher elemento">
+            <option value="agua">💧 Água</option>
+            <option value="fogo">🔥 Fogo</option>
+            <option value="ar">🍃 Ar</option>
+            <option value="terra">🌿 Terra</option>
+            <option value="trovao">⚡ Trovão</option>
+          </select>
+        </label>
+
+        <label class="favorito-controle">
+          <input id="favorita" type="checkbox">
+          <span class="estrela-favorito">☆</span>
+          <span>Guardar nos favoritos</span>
+        </label>
+      </div>
+
+      <div class="folha" id="folha">
+        <div class="ornamento ornamento-superior" aria-hidden="true">✧ ❦ ✧</div>
+
+        <div class="campo-escrita" id="texto"
+          contenteditable="true"
+          role="textbox"
+          aria-label="Escreva sua memória"
+          aria-multiline="true"
+          data-placeholder="Escreva aqui sua história mágica..."></div>
+
+        <div id="areaImagem" class="area-imagem"></div>
+
+        <div class="adesivos-folha" id="adesivosFolha" aria-label="Adesivos da página"></div>
+        <div class="ornamento ornamento-inferior" aria-hidden="true">✧ ❦ ✧</div>
+        <div class="contador-caracteres"><span id="contador">0</span> caracteres</div>
+      </div>
+
+      <input id="imagem" type="file" accept="image/*" hidden>
+
+      <div class="barra-ferramentas" aria-label="Ferramentas de edição">
+        <button type="button" data-action="desfazer" title="Desfazer" aria-label="Desfazer">↶</button>
+        <button type="button" data-action="refazer" title="Refazer" aria-label="Refazer">↷</button>
+        <button type="button" data-action="desenhar" title="Desenhar" aria-label="Desenhar">✎</button>
+        <button type="button" data-action="imagem" title="Adicionar imagem" aria-label="Adicionar imagem">▧</button>
+        <button type="button" data-action="emoji" title="Adicionar símbolo" aria-label="Adicionar símbolo">☺</button>
+        <button type="button" data-action="favorito" title="Favoritar" aria-label="Favoritar">☆</button>
+        <button type="button" data-action="texto" title="Estilo do texto" aria-label="Estilo do texto">T</button>
+        <button type="button" data-action="cor" title="Cor do texto" aria-label="Cor do texto">◉</button>
+      </div>
+
+      <section class="ferramentas-magicas">
+        <h2><span>✎</span> Ferramentas mágicas</h2>
+
+        <div class="grade-ferramentas">
+          <button class="ferramenta" type="button" data-action="borracha">
+            <span>◇</span>
+            <span>Borracha mágica</span>
+          </button>
+
+          <button class="ferramenta" type="button" data-action="fundos">
+            <span>▣</span>
+            <span>Fundos</span>
+          </button>
+
+          <button class="ferramenta" type="button" data-action="adesivos">
+            <span>☆</span>
+            <span>Adesivos</span>
+          </button>
+
+          <button class="ferramenta" type="button" data-action="desenhar">
+            <span>✎</span>
+            <span>Desenhar</span>
+          </button>
+        </div>
+
+        <div id="painelMagico" class="painel-magico" hidden></div>
+      </section>
+
+      <div class="acoes-finais">
+        <button id="cancelarEdicao" class="botao-secundario" type="button">
+          Limpar página
+        </button>
+        <span id="avisoSalvamento" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section class="colecao">
+      <div class="titulo-colecao">
+        <div>
+          <span class="sobretitulo">SEU UNIVERSO PARTICULAR</span>
+          <h2>Notas</h2>
+        </div>
+        <span class="total-memorias" id="totalMemorias">0 memórias</span>
+      </div>
+
+      <div class="filtros">
+        <button type="button" class="filtro ativo" data-filtro="todas">Todas</button>
+        <button type="button" class="filtro" data-filtro="favoritas">♡ Favoritas</button>
+        <button type="button" class="filtro" data-filtro="agua">💧 Água</button>
+        <button type="button" class="filtro" data-filtro="fogo">🔥 Fogo</button>
+        <button type="button" class="filtro" data-filtro="ar">🍃 Ar</button>
+        <button type="button" class="filtro" data-filtro="terra">🌿 Terra</button>
+        <button type="button" class="filtro" data-filtro="trovao">⚡ Trovão</button>
+      </div>
+
+      <div id="listaMemorias" class="lista-memorias"></div>
+      <p id="mensagemVazia" class="mensagem-vazia">
+        ✧ Suas próximas memórias mágicas aparecerão aqui. ✧
+      </p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <span>✧ Suas memórias merecem um lugar especial ✧</span>
+  </footer>
+
+  <dialog id="modalElemento" class="modal-elemento">
+    <div class="modal-conteudo">
+      <span class="modal-simbolo">✧</span>
+      <h2>Escolha sua magia</h2>
+      <p>Qual elemento vai acompanhar sua próxima memória?</p>
+
+      <div class="opcoes-elementos">
+        <button type="button" data-escolher="agua"><span>💧</span>Água</button>
+        <button type="button" data-escolher="fogo"><span>🔥</span>Fogo</button>
+        <button type="button" data-escolher="ar"><span>🍃</span>Ar</button>
+        <button type="button" data-escolher="terra"><span>🌿</span>Terra</button>
+        <button type="button" data-escolher="trovao"><span>⚡</span>Trovão</button>
+      </div>
+
+      <button type="button" id="fecharModal" class="fechar-modal">Voltar</button>
+    </div>
+  </dialog>
+
+  <script src="editor.js"></script>
+</body>
+</html>
